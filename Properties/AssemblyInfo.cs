@@ -2,11 +2,11 @@
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("DeleteTempFiles")]
-[assembly: AssemblyDescription("Deletes all files from %Temp% directory unless exclusions are specified as an argument in a shortcut.")]
+[assembly: AssemblyDescription("Deletes all files from %Temp% directory unless exclusions are specified as an argument on the command-line or in a shortcut.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("SokoolTools")]
 [assembly: AssemblyProduct("DeleteTempFiles")]
-[assembly: AssemblyCopyright("Copyright © SokoolTools 2009-2017")]
+[assembly: AssemblyCopyright("Copyright © SokoolTools 2009-2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
