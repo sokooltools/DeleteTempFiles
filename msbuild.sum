@@ -1,0 +1,51 @@
+Build started 8/7/2018 1:23:01 PM.
+Project "C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\DeleteTempFiles.sln" on node 1 (default targets).
+ValidateSolutionConfiguration:
+  Building solution configuration "Release|x86".
+Project "C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\DeleteTempFiles.sln" (1) is building "C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\DeleteTempFiles.csproj" (2) on node 1 (default targets).
+GenerateTargetFrameworkMonikerAttribute:
+Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+CoreCompile:
+Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+_CopyAppConfigFile:
+Skipping target "_CopyAppConfigFile" because all output files are up-to-date with respect to the input files.
+CopyFilesToOutputDirectory:
+  DeleteTempFiles -> C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\bin\DeleteTempFiles.exe
+PostBuildEvent:
+  "%DOCUMENTS%\Visual Studio 2015\DevTools\Postbuild.bat" "Release" "C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\" "DeleteTempFiles" "C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\bin\" "DeleteTempFiles"
+  
+  
+  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  BEGIN [DeleteTempFiles] Post-Build
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  
+  ======================================================================================
+  = List of local variables.
+  ======================================================================================
+  Configuration =	Release
+  SolutionDir   =	C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\
+  ProjectDir    =	C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\
+  ProjectName   =	DeleteTempFiles
+  TargetDir     =	C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\bin\
+  TargetName    =	DeleteTempFiles
+  TargetPath    =	C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\bin\DeleteTempFiles
+  ======================================================================================
+  
+  
+  -- No 'Release' specific tasks required. --
+  
+  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  END [DeleteTempFiles] Post-Build
+  +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+  
+  
+Done Building Project "C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\DeleteTempFiles.csproj" (default targets).
+
+Done Building Project "C:\Users\rs69287\Documents\Visual Studio 2015\DevTools\DeleteTempFiles\DeleteTempFiles.sln" (default targets).
+
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.35
