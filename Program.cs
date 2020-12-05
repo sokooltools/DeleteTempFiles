@@ -6,6 +6,8 @@ namespace DeleteTempFiles
 {
 	internal static class Program
 	{
+		private const string HORIZ_LINE = "===============================================================================";
+
 		//------------------------------------------------------------------------------------------------------------------------
 		/// <summary>
 		/// The main entry method along with any specified arguments.
@@ -29,7 +31,7 @@ namespace DeleteTempFiles
 				string tempPath = Environment.GetEnvironmentVariable("TEMP");
 				if (tempPath != null)
 				{
-					Console.WriteLine("\nProcessing: \"{0}\"\n", tempPath);
+					WriteBanner($"Processing: \"{tempPath}\"");
 
 					if (!tempPath.ToUpper().EndsWith("TEMP"))
 					{
@@ -45,20 +47,37 @@ namespace DeleteTempFiles
 					processor.ClearFolder(new DirectoryInfo(tempPath)); // Execute ClearFolder() on the IE's cache folder
 				}
 
-				Console.ForegroundColor = ConsoleColor.DarkYellow;
+				string winTemp = Path.Combine(Environment.GetEnvironmentVariable("WINDIR") ?? String.Empty, "Temp");
+				if (Directory.Exists(winTemp))
+				{
+					Console.WriteLine("");
+					Console.WriteLine("");
+					WriteBanner($"Processing: \"{winTemp}\"");
+
+					processor.ClearFolder(new DirectoryInfo(winTemp));
+					Console.ForegroundColor = ConsoleColor.DarkYellow;
+				}
+
 				Console.WriteLine("");
-				Console.WriteLine("{0} folders skipped.", processor.NumFoldersSkipped);
+				Console.WriteLine("");
+				WriteBanner("Results:");
+
+				Console.ForegroundColor = ConsoleColor.DarkYellow;
+				Console.WriteLine("\t{0} folders skipped", processor.NumFoldersSkipped);
+				Console.ForegroundColor = ConsoleColor.Green;
+				Console.WriteLine("");
+				Console.WriteLine("\t{0} folders and/or files deleted", processor.NumFoldersDeleted + processor.NumFilesDeleted);
 
 				if (processor.NumItemsNotDeleted > 0)
 				{
 					Console.ForegroundColor = ConsoleColor.Red;
 					Console.WriteLine("");
-					Console.WriteLine("{0} folders and/or files could not be deleted.", processor.NumItemsNotDeleted);
+					Console.WriteLine("\t{0} folders and/or files could not be deleted", processor.NumItemsNotDeleted);
 				}
 
-				Console.ForegroundColor = ConsoleColor.Green;
 				Console.WriteLine("");
-				Console.WriteLine("{0} folders and/or files deleted.", processor.NumFoldersDeleted + processor.NumFilesDeleted);
+				Console.ForegroundColor = ConsoleColor.White;
+				Console.WriteLine(HORIZ_LINE);
 			}
 			catch (Exception ex)
 			{
@@ -68,6 +87,21 @@ namespace DeleteTempFiles
 			{
 				DoExit();
 			}
+		}
+
+		//------------------------------------------------------------------------------------------------------------------------
+		/// <summary>
+		/// Writes the banner.
+		/// </summary>
+		/// <param name="text">The text.</param>
+		//------------------------------------------------------------------------------------------------------------------------
+		private static void WriteBanner(string text)
+		{
+			Console.ForegroundColor = ConsoleColor.White;
+			Console.WriteLine(HORIZ_LINE);
+			Console.WriteLine(text);
+			Console.WriteLine(HORIZ_LINE);
+			Console.WriteLine("");
 		}
 
 		//------------------------------------------------------------------------------------------------------------------------

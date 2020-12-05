@@ -94,7 +94,7 @@ namespace DeleteTempFiles
 				try
 				{
 					Console.ResetColor();
-					Console.Write("Deleting SDir: {0}", TruncatePath(diSubFolder.FullName, 43).PadRight(43));
+					Console.Write("Deleting Fldr: {0}", TruncatePath(diSubFolder.FullName, 43).PadRight(43));
 
 					if (ExcludedFolders.All(x => x != Path.GetFileName(diSubFolder.FullName)))
 					{
@@ -111,7 +111,7 @@ namespace DeleteTempFiles
 						NumFoldersSkipped++;
 					}
 				}
-				catch (Exception)
+				catch 
 				{
 					Console.ForegroundColor = ConsoleColor.Red;
 					Console.WriteLine(COULD_NOT_DELETE);
