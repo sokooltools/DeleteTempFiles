@@ -16,8 +16,8 @@ For example:
 
 <hr>
 
-Running the application immediately begins deleting folders and/or files from the user's 
-`%TEMP%` folder, meanwhile displaying the results in the application's console window 
+Running the application immediately begins deleting folders and/or files from both the user's `%TEMP%` folder (e.g. `'C:\Users\[Username]\AppData\Local\Temp'`)
+and system `%TEMP%` folder (e.g. `'C:\Windows\Temp'`), meanwhile displaying the results in the application's console window 
 such as this:
 
 ![Image1](Images/image1.png "Deleting Temp Files")
