@@ -9,6 +9,8 @@ This MS Windows mini-application is used for automatically deleting all folders 
 the user's designated `%TEMP%` folder (e.g. `'C:\Users\[Username]\AppData\Local\Temp'`) and
 the `'Temp'` folder located in the `'Windows'` directory (e.g. `'C:\Windows\Temp'`).
 >>>>>>> .theirs
+the user's designated `%TEMP%` folder (e.g. `'%USERPROFILE%\AppData\Local\Temp'`) and
+the `'Temp'` folder located in the `'Windows'` directory (e.g. `'%WINDIR%\Temp'`).
 
 ### Options
 
