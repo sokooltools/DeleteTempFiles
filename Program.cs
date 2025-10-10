@@ -8,12 +8,31 @@ namespace DeleteTempFiles
 	{
 		private const string HORIZ_LINE = "===============================================================================";
 
-		//------------------------------------------------------------------------------------------------------------------------
+		//----------------------------------------------------------------------------------------------------------------------
 		/// <summary>
-		/// The main entry method along with any specified arguments.
+		/// Serves as the entry point for the application, performing the deletion of temporary files and directories from 
+		/// system-defined temporary folders.
 		/// </summary>
-		/// <param name="args">The arguments.</param>
-		//------------------------------------------------------------------------------------------------------------------------
+		/// <remarks>
+		/// <para>
+		/// This method processes the system's temporary folder and the Windows Temp folder, deleting files and directories 
+		/// while skipping excluded folders specified via command-line arguments. The method also displays the results of the 
+		/// operation, including the number of items deleted and any items that could not be deleted.
+		/// </para>
+		/// <para>
+		/// Command-line arguments can be used to specify folders to exclude from processing. These should be provided as a 
+		/// single string, with folder paths separated by semicolons, commas, or pipe characters.
+		/// </para>
+		/// <para> The method ensures that the TEMP environment variable references a valid temporary folder before proceeding. 
+		/// If the TEMP variable does not point to a folder ending with "TEMP", the operation is aborted with a warning 
+		/// message.
+		/// </para>
+		/// </remarks>
+		/// <param name="args">
+		/// An array of command-line arguments. The first argument, if provided, specifies folders to exclude from processing.
+		/// Folder paths should be separated by semicolons, commas, or pipe characters.
+		/// </param>
+		//----------------------------------------------------------------------------------------------------------------------
 		private static void Main(string[] args)
 		{
 			var processor = new Processor();
@@ -22,6 +41,12 @@ namespace DeleteTempFiles
 				Console.Title = "Deleting Temp Files";
 				Console.SetBufferSize(150, 800);
 				Console.SetWindowSize(80, 40);
+
+				// Ensure console output is flushed immediately as lines are written.
+				Stream stdout = Console.OpenStandardOutput();
+				Console.SetOut(new StreamWriter(stdout) { AutoFlush = true });
+				Stream stderr = Console.OpenStandardError();
+				Console.SetError(new StreamWriter(stderr) { AutoFlush = true });
 
 				if (args.Length > 0)
 					processor.ExcludedFolders = args[0].Trim('"').Split(';', ',', '|').ToList();
@@ -48,7 +73,7 @@ namespace DeleteTempFiles
 				}
 
 				string winTemp = Path.Combine(Environment.GetEnvironmentVariable("WINDIR") ?? String.Empty, "Temp");
-				if (Directory.Exists(winTemp))
+				if (Directory.Exists(winTemp)) // Empty directory does not exist on all systems
 				{
 					Console.WriteLine("");
 					Console.WriteLine("");
@@ -89,12 +114,15 @@ namespace DeleteTempFiles
 			}
 		}
 
-		//------------------------------------------------------------------------------------------------------------------------
+		//----------------------------------------------------------------------------------------------------------------------
 		/// <summary>
-		/// Writes the banner.
+		/// Displays a banner with the specified text, enclosed between horizontal lines.
 		/// </summary>
-		/// <param name="text">The text.</param>
-		//------------------------------------------------------------------------------------------------------------------------
+		/// <remarks>
+		/// The banner is displayed in white text on the console, with a horizontal line above and below the specified text.
+		/// </remarks>
+		/// <param name="text">The text to display within the banner. Cannot be null or empty.</param>
+		//----------------------------------------------------------------------------------------------------------------------
 		private static void WriteBanner(string text)
 		{
 			Console.ForegroundColor = ConsoleColor.White;
@@ -104,11 +132,11 @@ namespace DeleteTempFiles
 			Console.WriteLine("");
 		}
 
-		//------------------------------------------------------------------------------------------------------------------------
+		//----------------------------------------------------------------------------------------------------------------------
 		/// <summary>
 		/// Does the exit.
 		/// </summary>
-		//------------------------------------------------------------------------------------------------------------------------
+		//----------------------------------------------------------------------------------------------------------------------
 		private static void DoExit()
 		{
 			Console.ForegroundColor = ConsoleColor.White;
